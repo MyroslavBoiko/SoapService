@@ -1,0 +1,76 @@
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+           xmlns:tns = "http://tutorialspoint/schemas"
+           targetNamespace = "http://tutorialspoint/schemas"
+           elementFormDefault="qualified">
+
+    <xs:element name="getTeamsRequest">
+        <xs:complexType>
+
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTeamsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="team" type="tns:team" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTeamRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="name"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTeamResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="team" type="tns:team"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteTeamRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="name"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteTeamResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="team" type="tns:team"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+        <xs:complexType name="team">
+            <xs:sequence>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element type="xs:string" name="city"/>
+                <xs:sequence>
+                    <xs:element name="players" type="tns:players"/>
+                </xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="players">
+            <xs:sequence>
+                <xs:element type="tns:player" name="player" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="player">
+            <xs:sequence>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element type="xs:string" name="surname"/>
+                <xs:element type="xs:string" name="teamName"/>
+            </xs:sequence>
+        </xs:complexType>
+
+</xs:schema>
